@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Song</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 500px;
+            padding: 20px;
+            background: #444;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        h1 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        textarea,
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #888;
+            border-radius: 4px;
+            background: #555;
+            color: white;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 15px;
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        textarea {
+            height: 100px;
+            resize: none;
+        }
+
+        img {
+            width: 100px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        audio {
+            margin: 10px 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Song</h1>
+        <form action="/edit/<%= song.id %>" method="POST" enctype="multipart/form-data">
+            <input type="text" name="title" value="<%= song.title %>" placeholder="Song Title" required>
+            <input type="text" name="artist" value="<%= song.artist %>" placeholder="Artist" required>
+            <textarea name="lyrics" placeholder="Lyrics"><%= song.lyrics %></textarea>
+
+            <% if (song.image) { %>
+                <img src="<%= song.image %>" alt="<%= song.title %> cover">
+                <input type="hidden" name="oldImage" value="<%= song.image %>">
+            <% } else { %>
+                <p>No image available</p>
+            <% } %>
+            <input type="file" name="imageFile" accept="image/*">
+
+            <% if (song.file_path) { %>
+                <audio controls>
+                    <source src="<%= song.file_path %>" type="audio/mpeg">
+                    Your browser does not support the audio tag.
+                </audio>
+                <input type="hidden" name="oldFilePath" value="<%= song.file_path %>">
+            <% } else { %>
+                <p>No audio file available</p>
+            <% } %>
+            <input type="file" name="songFile" accept="audio/*">
+
+            <button type="submit">Save Changes</button>
+            <a href="/" class="back-link">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>

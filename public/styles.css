@@ -1,0 +1,131 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(144,18,40,1) 100%);
+    color: #ffffff;
+}
+
+h1 {
+    text-align: center;
+    background: linear-gradient(90deg, #000000, #0c1812);
+    background-clip: text;
+    color: transparent;
+    font-size: 4.5em;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.add-song-container {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.add-song-button {
+    padding: 10px 10px;
+    background: linear-gradient(45deg, #0c210f, #33e033);
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.song-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.song-card {
+    display: flex;
+    align-items: center;
+    background: rgba(30, 30, 30, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+    overflow: hidden;
+    width: 90%;
+    max-width: 800px;
+    margin: 10px auto;
+    padding: 10px;
+    transition: transform 0.2s;
+    height: 130px;
+}
+
+.song-image {
+    flex-shrink: 0;
+    width: 100px;
+    height: 100px;
+}
+
+.song-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px 0 0 8px;
+}
+
+.song-info {
+    padding: 5px;
+    flex-grow: 1;
+}
+
+.song-info h2 {
+    font-size: 1.2em;
+    margin-bottom: 4px;
+    color: #e0e0e0;
+}
+
+.song-info p {
+    color: #b3b3b3;
+    font-size: 0.9em;
+}
+
+.song-options {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 5px;
+}
+
+.icon-form {
+    margin-left: 10px;
+}
+
+.edit-icon, .delete-icon {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.edit-icon:hover, .delete-icon:hover {
+    color: #ffcc00;
+}
+
+.audio-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.song-info audio {
+    flex-grow: 1;
+    margin-right: 10px;
+    font-size: 0.9em;
+}
+
+@media (max-width: 768px) {
+    .song-card {
+        flex-direction: column;
+    }
+
+    .song-image img {
+        width: 100%;
+        height: auto;
+    }
+}
